@@ -110,6 +110,27 @@
 ![alt tag](https://github.com/alexandrospopov/parisLumiere/blob/master/img/scatterplot.png)
  
  ## Using the Tool 
+ Our tool is quite simple to use. You can use it directly on <a href="https://riff4.github.io/parisLumiere/main_layout.html">this link</a>.<br>
+ The first time you arrive on the page, you have first to move a slider to show the points on the map.
+ Then you can use our three filters which enable you to display movies according its type, its score and the time it was shot. 
+ 
+  ![alt tag](https://github.com/alexandrospopov/parisLumiere/blob/master/img/3_filters.jpg)
+ 
+ By combining those three filters, our tool helps you to answer to complex questions such as : 
+ <ul>
+ <li>What movies have been shot close to my work or my home ? </li>
+ <li>Where are the movies shot in winter and in spring ?</li>
+ <li>What kind of movies are shot in winter in the center of the city? </li>
+ <li>Where and when are shot the best movies in Paris ?</li>
+ </ul>
+ 
+ Then, when you have spotted an interesting shooting, just moove your mouse on and you will see what are the other shootings linked to this movie, and the details information. 
+ 
+ In the following example, I decided to spot the best drama shot during the summer : 
+ 
+  ![alt tag](https://github.com/alexandrospopov/parisLumiere/blob/master/img/example1.jpg)
+ 
+ 
  
  ## Interesting results
  
