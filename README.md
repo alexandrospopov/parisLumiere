@@ -1,6 +1,7 @@
  # ParisLumiere 
  
  By @riff4, @dmignon1907 and @alexandrospopov.
+ <br />
 ![general screenshot](https://github.com/alexandrospopov/parisLumiere/blob/master/img/general.png)
 
  ## Introduction
@@ -10,7 +11,7 @@
  For us, is was foremost a way to dig into data exploration and tool designing. We wanted to choose a subject that would provide rich data and would match our personal interests. 
  Quickly, we noticed that we shared an interest in Cinema and we really focused in this field. 
  
- One dataset that we liked instantly was the [Paris Movie Shooting Records](https://opendata.paris.fr/explore/dataset/tournagesdefilmsparis2011/table/?refine.type_de_tournage=LONG+METRAGE&location=11,48.84663,2.34995) fro m the Paris Open Data website.
+ One dataset that we liked instantly was the [Paris Movie Shooting Records](https://opendata.paris.fr/explore/dataset/tournagesdefilmsparis2011/table/?refine.type_de_tournage=LONG+METRAGE&location=11,48.84663,2.34995) from the Paris Open Data website.
   It provided us with the basic data of every shot made in Paris in 2016. Choosing a movie, we were able to see where it had been shot in Paris. 
   
  ![opendata screenshot](https://github.com/alexandrospopov/parisLumiere/blob/master/img/opendata.png)
@@ -57,8 +58,8 @@
  
  At first, we will query the API though the Python Package : [tmDB Simple](https://pypi.python.org/pypi/tmdbsimple) using the movie title. 
  
- This first step provides a great amount of new data. But it needs processing. In deed we face two kinds of issues : 
- - **several movies for one title** : the API provides several references for one title. We have to choose manually which one is the right one. 
+ This first step provides a great amount of new data. But it needs processing. Indeed we face two kinds of issues : 
+ - **several movies for one title** : the API provides several references for one title. We have to choose manualy which one is the right one. 
  - **missing information** : as we have feared, tmDB is unable to provide us with all the information we have dreamed of. In some cases because the database is uncomplete, in other cases because the information does not exist yet: the movie is not out or has been canceled. 
   
  The second issue leads us to carefully choose what information we wish to add to every movie. We decided to add only the genre and the ratings. 
@@ -67,7 +68,7 @@
   ![tmdb logo](  https://s1.qwant.com/thumbr/0x0/0/5/0114a7edba26ac26ff9a8ef3e6916d/b_1_q_0_p_0.jpg?u=https%3A%2F%2Fwww.digischool.fr%2Fimages%2Farticle%2F4948_1.jpg&q=0&b=1&p=0&a=1)
 
  
- This entire pipeline has handled using Python.
+ This entire pipeline was handled using Python.
  
  ### Data presentation
  
@@ -93,17 +94,18 @@
  
  ### Tickboxes
  
- To filter the shooting based on the genre criteria, we chose tickboxes which seemed to be the easiest and the moste userfriendly way to go. It directly sorts out the points on the map.
+ To filter the shooting based on the genre criteria, we chose tickboxes which seemed to be the easiest and the most userfriendly way to go. It directly sorts out the points on the map.
  
  ### Histograms
  
  To display the distribution of the ratings and shooting times, we used simple bar charts with the d3.histogram function. We added two brushes to let the possibility to the user to filter them as he wishes. Again, the points on the map are affected by those filters.
+ At this point, the filter applied by using the checkboxes do not have effect on the histograms' information.
 
 ![alt tag](https://github.com/alexandrospopov/parisLumiere/blob/master/img/histograms.png)
  
  ### Scatterplot
  
- To complete the map visualisation, we made a scatter plot with the timeline and borough as coordinates. We linked this plot with two brushes for more interactivity.
+ To complete the map visualisation, we made a scatter plot with the timeline and borough as coordinates. We linked this plot with the two brushes for more interactivity.
  
 ![alt tag](https://github.com/alexandrospopov/parisLumiere/blob/master/img/scatterplot.png)
  
