@@ -113,6 +113,7 @@
  Our tool is quite simple to use. You can use it directly on <a href="https://riff4.github.io/parisLumiere/main_layout.html">this link</a>.<br>
  The first time you arrive on the page, you have first to move a slider to show the points on the map.
  Then you can use our three filters which enable you to display movies according its type, its score and the time it was shot. 
+ The filters are dynamicaly applied on the maps.
  
   ![alt tag](https://github.com/alexandrospopov/parisLumiere/blob/master/img/3_filters.JPG)
  
@@ -130,8 +131,11 @@
  
   ![alt tag](https://github.com/alexandrospopov/parisLumiere/blob/master/img/example1.JPG)
  
- 
- 
  ## Interesting results
+ 
+By using the Paris Lumière project, some interesting results came to us. 
+
+If you visualize the evolution of the shooting places, months after months throughout the year, you will see that during winter the shooting places are globaly spread whereas during summer the shooting places are gathered around the center of paris.
+
  
  ## Perspectives & Conclusion
