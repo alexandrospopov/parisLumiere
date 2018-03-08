@@ -5,7 +5,7 @@
 
 ![general screenshot](https://github.com/alexandrospopov/parisLumiere/blob/master/img/general.png)
 
-![Youtube Presentation](https://www.youtube.com/watch?v=BnF7W-Ewgys&feature=youtu.be)
+[Here you can find a Youtube presentation](https://www.youtube.com/watch?v=BnF7W-Ewgys&feature=youtu.be)
 
  ## Introduction
  
