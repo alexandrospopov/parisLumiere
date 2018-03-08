@@ -135,7 +135,11 @@
  
 By using the Paris Lumière project, some interesting results came to us. 
 
+We noticed that there were by far, much more Comedy shootings than Action or Thriller.
+
 If you visualize the evolution of the shooting places, months after months throughout the year, you will see that during winter the shooting places are globaly spread whereas during summer the shooting places are gathered around the center of paris.
+
+Finally, we noticed that shootings were widespread through the city. The directors do not sum up Paris to the Eiffel Tower !
 
  
  ## Perspectives & Conclusion
