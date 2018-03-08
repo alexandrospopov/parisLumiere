@@ -11,8 +11,6 @@ var margin = {top:20, right:50, bottom:0, left:20},
 
     var startDate = new Date("2016-01-01"),
         endDate = new Date("2017-01-01");
-    var minNote=0;
-    var maxNote=10;
 
     var dateArray = d3.timeMonth(startDate, endDate);
 
@@ -23,7 +21,7 @@ var margin = {top:20, right:50, bottom:0, left:20},
     // xTime scale for time
     var xTime = d3.scaleTime()
         .domain([startDate, endDate])
-        .range([0, width])  
+        .range([0, width])
         .clamp(true);
 
     // y scale for histogram
@@ -96,15 +94,18 @@ var margin = {top:20, right:50, bottom:0, left:20},
         .attr("transform", "translate(" + margin.left + "," + 110 + ")");
 
 
-    var bar1;
-
     ////////// load data //////////
 
     d3.json("data/dataCompleteFilms.json",function(error,data){
         if (error) throw error;
         // Checking
-        var bins1 = histo1(data);
-        var bins = histoTime(data);
+        var data_triee = data.filter(function(d) {
+            console.log();
+            return (d.fields.note >= 0);
+        });
+
+        var bins1 = histo1(data_triee);
+        var bins = histoTime(data_triee);
 
         y.domain([0, d3.max(bins, function(d) { return d.length; })]);
         
@@ -186,7 +187,6 @@ var margin = {top:20, right:50, bottom:0, left:20},
             .attr("fill", function(d) { return colours(d.x0); });
 
         bar.append("text")
-            .attr("class","textTime")
             .attr("dy", ".75em")
             .attr("y", "6")
             .attr("x", function(d) { return (xTime(d.x1) - xTime(d.x0))/2; })
@@ -197,11 +197,11 @@ var margin = {top:20, right:50, bottom:0, left:20},
         
         y1.domain([0, d3.max(bins1, function(d) { return d.length; })]);
 
-        bar1 = histTime.selectAll(".barNote")
+        var bar1 = histTime.selectAll(".barNote")
             .data(bins1)
             .enter()
             .append("g")
-            .attr("class", "barNote1")
+            .attr("class", "barNote")
             .attr("transform", function(d) {
                 return "translate(" + x1(d.x0) + "," + y1(d.length) + ")";
             });
@@ -214,7 +214,6 @@ var margin = {top:20, right:50, bottom:0, left:20},
             .attr("fill", function(d){return colours(d.x0)});
 
         bar1.append("text")
-            .attr("class","textNote")
             .attr("dy", ".75em")
             .attr("y", "6")
             .attr("x", function(d) { return (x1(d.x1) - x1(d.x0))/2; })
@@ -222,87 +221,14 @@ var margin = {top:20, right:50, bottom:0, left:20},
             .text(function(d) { if (d.length>15) { return d.length; } })
             .style("fill", "white");
         
-        drawPlot(data)
-        dataset=data;
+        
+        dataset=data_triee
+        drawPlot(data_triee);
 
     });
 
     function plotCirclesMap(date){console.log("waiting for definition")};
     
-    function updateBars(data){
-        d3.selectAll(".barNote").remove();
-        d3.selectAll(".barTime").remove();
-        d3.selectAll(".textNote").remove();
-        d3.selectAll(".textTime").remove();
-
-        var bins1 = histo1(data);
-        var bins = histoTime(data);
-
-        y.domain([0, d3.max(bins, function(d) { return d.length; })]);
-        
-        var lNotes=['NaN',1,2,3,4,5,6,7,8,9,10];
-        
-        
-        var bar = histTime.selectAll(".barTime")
-            .data(bins)
-            .enter()
-            .append("g")
-            .attr("class", "barTime")
-            .attr("transform", function(d) {
-                return "translate(" + xTime(d.x0) + "," + y(d.length) + ")";
-            });
-
-        bar.append("rect")
-            .attr("class", "barTime")
-            .attr("x", 1)
-            .attr("width", function(d) { return xTime(d.x1) - xTime(d.x0) - 1; })
-            .attr("height", function(d) { return 110 + histHeight - y(d.length); })
-            .attr("fill", function(d) { return colours(d.x0); });
-
-        bar.append("text")
-            .attr("class","textTime")
-            .attr("dy", ".75em")
-            .attr("y", "6")
-            .attr("x", function(d) { return (xTime(d.x1) - xTime(d.x0))/2; })
-            .attr("text-anchor", "middle")
-            .text(function(d) { if (d.length>15) { return d.length; } })
-            .style("fill", "white");
-        
-        
-        y1.domain([0, d3.max(bins1, function(d) { return d.length; })]);
-
-        bar1 = histTime.selectAll(".barNote")
-            .data(bins1)
-            .enter()
-            .append("g")
-            .attr("class", "barNote1")
-            .attr("transform", function(d) {
-                return "translate(" + x1(d.x0) + "," + y1(d.length) + ")";
-            });
-
-        bar1.append("rect")
-            .attr("class", "barNote")
-            .attr("x", 1)
-            .attr("width", function(d) { return x1(d.x1) - x1(d.x0)-1; })
-            .attr("height", function(d) { return histHeight1 - y1(d.length); })
-            .attr("fill", function(d){return colours(d.x0)});
-
-        bar1.append("text")
-            .attr("class","textNote")
-            .attr("dy", ".75em")
-            .attr("y", "6")
-            .attr("x", function(d) { return (x1(d.x1) - x1(d.x0))/2; })
-            .attr("text-anchor", "middle")
-            .text(function(d) { if (d.length>15) { return d.length; } })
-            .style("fill", "white");
-        
-        drawPlot(data);
-        dataset=data;
-        brushmoveTime();
-        
-    }
-
-
     function update(dmin,dmax, nmin, nmax, dataset) {
         // filter data set and redraw plot
         var newData = dataset.filter(function(d) {
@@ -318,6 +244,8 @@ var margin = {top:20, right:50, bottom:0, left:20},
                     return "#eaeaea";
                 }
             })
+        console.log(nmax);
+        console.log(nmin);
         d3.selectAll(".barNote")
             .attr("fill", function(d) {
                 if ((d.x0 < nmax) && (d.x0 >= nmin)) {
@@ -338,6 +266,8 @@ var margin = {top:20, right:50, bottom:0, left:20},
         .attr("class", "brush")
         .call(brushTime);
 
+    var minNote=0;
+    var maxNote=10;
 
     brushgTime.call(brushTime.move, [xTime(startDate)+margin.left, xTime(endDate)+margin.left]);
 
@@ -412,7 +342,7 @@ var margin = {top:20, right:50, bottom:0, left:20},
             .transition()
             .duration(400)
             .attr("cy", function(d) { return (d.fields.ardt-75000)/22*((height/2+150)-(height/2-150))+(height/2-108); });
-        
+
         
 
         // if filtered dataset has less circles than already existing, remove excess
