@@ -149,7 +149,7 @@ var margin = {top:20, right:50, bottom:0, left:20},
             .attr("transform", function(d) {
                 return "translate(" + 0 + "," + ((-0)+d3.max(bins, function(d) { return d.length; }))  + ")";
             })
-            .text("Visualisation de la répartition des tournages suivant les arrondissements")
+            .text("Movie Shootings as a function of districts and time :")
             .style ("font-size","15px")
             .style ("fill","grey")
             .style ("font-weight","bold")
