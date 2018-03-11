@@ -146,3 +146,13 @@ Finally, we noticed that shootings were widespread through the city. The directo
 
  
  ## Perspectives & Conclusion
+ 
+ Sure our visualisation is not perfect. They are several points we would have like to improve.
+
+First of all, the Google Maps API showed some issues and doen't work always properly and we didn't find any solutions for it.
+
+Our second problem is somehow linked with the first. To make the visualisation clearer, we wanted to link the histograms with tickboxes. For example, when only the drama box is ticked, the histograms should have taken in count only the shootings of dramatic movies. We achieved to do so, but it made our problem with the Google Maps API way worse than it actually is, therefore we're not pushing this version now.
+
+We had also two issues with the data. First of all, we don't have that much data to characterize the movies. We have only been able to get a note and a genre for the movies, furthermore we haven't been able to get this data for each movies, only for a minority for each. What could be interessant is to get some more informations like the budget or the profit, and to do so for every movies.
+
+Finally, each points represent one shooting. It's what we need for the map, and we add interaction to show only the movie selected shootings on the map when the cursor is on one of the points. But it is obviously biaising our histograms since it takes it counts the number shootings and not the number of movies. It could have been intesting to group the shooting points of the same movie in this visualisation.
